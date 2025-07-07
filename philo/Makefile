@@ -6,7 +6,7 @@
 #    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 15:25:30 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/07/05 18:25:07 by mez-zahi         ###   ########.fr        #
+#    Updated: 2025/07/07 18:11:29 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ PARSIN = parsin
 
 SRCS = main.c \
 		${SRC}/ft_parsing_1.c \
+		${SRC}/prepare_simulation.c \
 		${UTILS}/ft_atoi.c \
 		${UTILS}/ft_putstr_fd.c \
 
