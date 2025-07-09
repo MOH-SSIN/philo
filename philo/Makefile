@@ -6,7 +6,7 @@
 #    By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 15:25:30 by mez-zahi          #+#    #+#              #
-#    Updated: 2025/07/07 18:11:29 by mez-zahi         ###   ########.fr        #
+#    Updated: 2025/07/09 20:40:34 by mez-zahi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,13 @@ PARSIN = parsin
 SRCS = main.c \
 		${SRC}/ft_parsing_1.c \
 		${SRC}/prepare_simulation.c \
+		${SRC}/lancer_simulation_1.c \
+		${SRC}/routine.c \
+		${SRC}/ft_free.c  \
 		${UTILS}/ft_atoi.c \
 		${UTILS}/ft_putstr_fd.c \
-
-
+		${UTILS}/utlis_1.c \
+		
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

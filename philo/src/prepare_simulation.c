@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:03:52 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/08 16:32:21 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/09 12:46:28 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	init_controller(t_controller **ctrl, char **argv)
 	if (!(*ctrl)->philos)
 		return (-1);
 	(*ctrl)->philo_count = nb_philo;
+	// printf("<======>%d\n",(*ctrl)->philo_count);
 	(*ctrl)->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * nb_philo);
 	if (!(*ctrl)->forks)
 		return (-1);
