@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:25:03 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/10 12:31:04 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:03:30 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ int	join_threads(t_controller **cntrl)
 	{
 		while (i < (*cntrl)->philo_count)
 		{
-			if (pthread_join((*cntrl)->philos[i]->thread, NULL))
+			if (pthread_detach((*cntrl)->philos[i]->thread))
 				return (-1);
+			// if (pthread_join((*cntrl)->philos[i]->thread, NULL))
+			// 	return (-1);
 			i++;
 		}
 	}
