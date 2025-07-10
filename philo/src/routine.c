@@ -6,41 +6,41 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 18:05:05 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/09 19:41:52 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:43:59 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	ft_eat(t_philo *philo)
+// Le philosophe mange
+void	philo_eat(t_philo *philo)
 {
-	long	current_time;
+	long	now;
 
-	current_time = ft_get_current_time();
-	print_status(philo, "is eating");
+	now = get_time_now();
+	display_state(philo, "is eating");
+
 	pthread_mutex_lock(&philo->controller->last_meal_mutex);
-	philo->last_meal = current_time;
+	philo->last_meal = now;
 	pthread_mutex_unlock(&philo->controller->last_meal_mutex);
+
 	pthread_mutex_lock(&philo->controller->num_eat_mutex);
 	if (philo->eat_count > 0)
 		philo->eat_count--;
 	pthread_mutex_unlock(&philo->controller->num_eat_mutex);
+
 	ft_usleep(philo->time_to_eat);
 }
 
-void	ft_sleep(t_philo *philo)
+// Le philosophe dort
+void	philo_sleep(t_philo *philo)
 {
-	// long	current_time;
-
-	// current_time = ft_get_current_time();
-	print_status(philo, "is sleeping");
+	display_state(philo, "is sleeping");
 	ft_usleep(philo->time_to_sleep);
 }
 
-void	ft_think(t_philo *philo)
+// Le philosophe réfléchit
+void	philo_think(t_philo *philo)
 {
-	// long	current_time;
-
-	// current_time = ft_get_current_time();
-	print_status(philo, "is thinking");
+	display_state(philo, "is thinking");
 }

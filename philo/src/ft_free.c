@@ -6,14 +6,17 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 20:39:14 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/09 20:42:46 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:47:57 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../include/philo.h"
 
-void	ft_free_philos(t_controller *cntrl)
+#include "../include/philo.h"
+
+// Libère la mémoire de chaque philosophe et détruit son mutex
+void	clean_philos(t_controller *cntrl)
 {
 	int	i;
 
@@ -30,28 +33,31 @@ void	ft_free_philos(t_controller *cntrl)
 	free(cntrl->philos);
 }
 
-void	ft_destroy_mutex(t_controller *cntrl)
+// Détruit les mutex globaux (print et eat counter)
+void	clean_global_mutex(t_controller *cntrl)
 {
 	pthread_mutex_destroy(&cntrl->print_mutex);
 	pthread_mutex_destroy(&cntrl->num_eat_mutex);
+	pthread_mutex_destroy(&cntrl->last_meal_mutex);
 }
 
+// Libère toutes les ressources du contrôleur
 void	free_controller(t_controller *cntrl)
 {
 	int	i;
 
-	if (cntrl)
+	if (!cntrl)
+		return ;
+	if (cntrl->philos)
+		clean_philos(cntrl);
+	if (cntrl->forks)
 	{
-		if (cntrl->philos)
-			ft_free_philos(cntrl);
-		if (cntrl->forks)
-		{
-			i = 0;
-			while (i < cntrl->philo_count)
-				pthread_mutex_destroy(&cntrl->forks[i++]);
-			free(cntrl->forks);
-		}
-		ft_destroy_mutex(cntrl);
-		free(cntrl);
+		i = 0;
+		while (i < cntrl->philo_count)
+			pthread_mutex_destroy(&cntrl->forks[i++]);
+		free(cntrl->forks);
 	}
+	clean_global_mutex(cntrl);
+	free(cntrl);
 }
+

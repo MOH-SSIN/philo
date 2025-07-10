@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:25:19 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/09 20:49:37 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:53:37 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,69 +15,78 @@
 
 # include <pthread.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
-#include <stdbool.h>
+# include <stdio.h>
+# include <stdbool.h>
 # include <sys/time.h>
 # include <limits.h>
 
+/*==================== STRUCTURES ====================*/
 
 typedef struct s_controller	t_controller;
+
 typedef struct s_philo
 {
-	pthread_mutex_t	meal_mutex;        // protège last_meal de CE philosophe
-	pthread_t		thread;            // thread du philosophe
+	int				id;
+	long			start_time;
+	size_t			last_meal;
+	size_t			time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				eat_count;
 
-	int				id;                // son numéro (1, 2, 3, ...)
-	long			start_time;        // heure de départ
-	size_t			time_to_die;       // temps avant de mourir sans manger
-	int				time_to_eat;       // combien de temps pour manger
-	int				time_to_sleep;     // combien de temps pour dormir
-	size_t			last_meal;         // moment du dernier repas
-	int				eat_count;         // combien de repas faits
+	pthread_t		thread;
+	pthread_mutex_t	meal_mutex;
 
-	t_controller	*controller;       // lien vers la structure principale
-	int				eat_limit;         // nombre de repas à faire (par philosophe)
+	t_controller	*controller;
 }	t_philo;
 
 typedef struct s_controller
 {
-	pthread_mutex_t	print_mutex;       // protège printf
-	pthread_mutex_t	last_meal_mutex;   // protège le champ last_meal
-	pthread_mutex_t	num_eat_mutex;     // protège le nombre de repas
+	int				philo_count;
+	int				stop_flag;
+	int				eat_goal;
+	int				ready_count;
 
-	pthread_mutex_t	*forks;            // tableau de fourchettes (1 par philosophe)
-	pthread_t		monitor_thread;    // thread qui surveille les philosophes
-
-	t_philo			**philos;          // tableau de pointeurs vers les philosophes
-	int				philo_count;       // nombre total de philosophes
-	int				stop_flag;         // indique si on doit arrêter (1 = oui)
-	int				eat_goal;          // nombre de repas à faire (si précisé)
-	int				ready_count;       // combien de philosophes sont prêts
+	t_philo			**philos;
+	pthread_t		monitor_thread;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	last_meal_mutex;
+	pthread_mutex_t	num_eat_mutex;
 }	t_controller;
 
+/*==================== PARSING ====================*/
 
-int				ft_atoi(const char *str);
-int				ft_parsin(int argc, char **argv);
-void			ft_putstr_fd(char const *s, int fd);
-size_t			ft_strlen(const char *s);
-int				prepare_simulation(char **argv, t_controller **cntrl);
+int		ft_atoi(const char *str);
+int		ft_parsin(int argc, char **argv);
+size_t	ft_strlen(const char *s);
+void	ft_putstr_fd(const char *s, int fd);
 
-//
-int				lancer_simulation(t_controller **cntrl);
-void			*routine(void *arg);
+/*==================== INIT + CLEAN ====================*/
 
-bool			must_eat(t_controller *cntrl);
-void			print_status(t_philo *philo, char *status);
-size_t			ft_get_current_time(void);
-void			ft_usleep(size_t milliseconds);
+int		init_ctrl(t_controller **ctrl, char **argv);
+int		prepare_simulation(char **argv, t_controller **ctrl);
+int		lancer_simulation(t_controller **ctrl);
+void	free_controller(t_controller *ctrl);
 
+/*==================== THREADS ====================*/
 
-void	ft_eat(t_philo *philo);
-void	ft_sleep(t_philo *philo);
-void	ft_think(t_philo *philo);
+void	*routine(void *arg);
+void	*monitor_philos(void *arg);
+void	handle_one_philo(t_philo *philo);
 
-//ft_free.c
-void	free_controller(t_controller *cntrl);
+/*==================== ACTIONS ====================*/
+
+void	philo_eat(t_philo *philo);
+void	philo_sleep(t_philo *philo);
+void	philo_think(t_philo *philo);
+
+/*==================== UTILS ====================*/
+
+bool	all_philos_done(t_controller *ctrl);
+void	display_state(t_philo *philo, char *msg);
+size_t	get_time_now(void);
+void	ft_usleep(size_t ms);
 
 #endif

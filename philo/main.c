@@ -6,34 +6,33 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:25:03 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/10 17:03:30 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:10:21 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
-int	join_threads(t_controller **cntrl)
+// Gérer les threads : join pour 1 philo, detach sinon, + join du moniteur
+int	end_threads(t_controller **ctrl)
 {
 	int	i;
 
 	i = 0;
-	if ((*cntrl)->philo_count == 1)
+	if ((*ctrl)->philo_count == 1)
 	{
-		if (pthread_join((*cntrl)->philos[i]->thread, NULL))
+		if (pthread_join((*ctrl)->philos[0]->thread, NULL))
 			return (-1);
 	}
 	else
 	{
-		while (i < (*cntrl)->philo_count)
+		while (i < (*ctrl)->philo_count)
 		{
-			if (pthread_detach((*cntrl)->philos[i]->thread))
+			if (pthread_detach((*ctrl)->philos[i]->thread))
 				return (-1);
-			// if (pthread_join((*cntrl)->philos[i]->thread, NULL))
-			// 	return (-1);
 			i++;
 		}
 	}
-	if (pthread_join((*cntrl)->monitor_thread, NULL))
+	if (pthread_join((*ctrl)->monitor_thread, NULL))
 		return (-1);
 	return (0);
 }
@@ -48,7 +47,7 @@ int	main(int argc, char **argv)
 	if (prepare_simulation(argv,&cntrl))
 		return (1);
 	lancer_simulation(&cntrl);
-	join_threads(&cntrl);
+	end_threads(&cntrl);
 	free_controller(cntrl);
 	return (0);
 }
