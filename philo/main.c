@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:25:03 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/09 20:44:30 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:31:04 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	join_threads(t_controller **cntrl)
 			i++;
 		}
 	}
-	// if (pthread_join((*cntrl)->monitor_thread, NULL))
-	// 	return (-1);
+	if (pthread_join((*cntrl)->monitor_thread, NULL))
+		return (-1);
 	return (0);
 }
 
