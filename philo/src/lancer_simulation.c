@@ -99,7 +99,7 @@ void	*routine(void *arg)
 }
 
 // Lancement de tous les threads (philosophes + moniteur)
-int    lancer_simulation(t_controller **cntrl)
+int	lancer_simulation(t_controller **cntrl)
 {
 	int	i;
 

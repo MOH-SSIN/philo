@@ -6,12 +6,9 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 20:39:14 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/10 17:47:57 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:16:05 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-#include "../include/philo.h"
 
 #include "../include/philo.h"
 
@@ -60,4 +57,3 @@ void	free_controller(t_controller *cntrl)
 	clean_global_mutex(cntrl);
 	free(cntrl);
 }
-

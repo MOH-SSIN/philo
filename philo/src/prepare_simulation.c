@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:03:52 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/10 17:36:11 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:17:42 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	init_ctrl(t_controller **ctrl, char **argv)
 	(*ctrl)->forks = malloc(sizeof(pthread_mutex_t) * nb_philo);
 	if (!(*ctrl)->forks)
 		return (-1);
-	// (*ctrl)->ready_count = 0;
 	return (0);
 }
 
@@ -100,9 +99,9 @@ int	setup_philos(t_controller **ctrl, char **argv)
 // Fonction principale de préparation avant simulatio
 int	prepare_simulation(char **argv, t_controller **cntrl)
 {
-    if (init_ctrl(cntrl, argv))
+	if (init_ctrl(cntrl, argv))
 		return (1);
-	if (init_all_mutex(cntrl))// j'ai ici !!!
+	if (init_all_mutex(cntrl))
 		return (1);
 	if (setup_philos(cntrl, argv))
 		return (1);

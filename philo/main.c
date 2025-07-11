@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:25:03 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/10 17:10:21 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:18:50 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,10 @@ int	main(int argc, char **argv)
 	cntrl = NULL;
 	if (ft_parsin(argc, argv))
 		return (ft_putstr_fd("invalid arguments \n", 2), 1);
-	if (prepare_simulation(argv,&cntrl))
+	if (prepare_simulation(argv, &cntrl))
 		return (1);
 	lancer_simulation(&cntrl);
 	end_threads(&cntrl);
 	free_controller(cntrl);
 	return (0);
 }
-
-/*
-num_philo = ft_atoi_parsing(argv[1])
-
-time_die = argv[2]
-
-time_eat = argv[3]
-
-time_sleep = argv[4]
-
-*/

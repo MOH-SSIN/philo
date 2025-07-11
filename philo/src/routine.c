@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 18:05:05 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/10 17:43:59 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/11 18:18:02 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,13 @@ void	philo_eat(t_philo *philo)
 
 	now = get_time_now();
 	display_state(philo, "is eating");
-
 	pthread_mutex_lock(&philo->controller->last_meal_mutex);
 	philo->last_meal = now;
 	pthread_mutex_unlock(&philo->controller->last_meal_mutex);
-
 	pthread_mutex_lock(&philo->controller->num_eat_mutex);
 	if (philo->eat_count > 0)
 		philo->eat_count--;
 	pthread_mutex_unlock(&philo->controller->num_eat_mutex);
-
 	ft_usleep(philo->time_to_eat);
 }
 
