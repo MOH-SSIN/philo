@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:03:52 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/12 10:45:57 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/12 11:54:26 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ t_philo	*new_philo(t_philo *ph, char **argv)
 		ph->eat_count = ft_atoi(argv[5]);
 	else
 		ph->eat_count = -1;
-	if (pthread_mutex_init(&ph->meal_mutex, NULL))
-		return (NULL);
 	return (ph);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 20:39:14 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/12 10:45:09 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/12 11:54:21 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	clean_philos(t_controller *cntrl)
 	{
 		if (cntrl->philos[i])
 		{
-			pthread_mutex_destroy(&cntrl->philos[i]->meal_mutex);
 			free(cntrl->philos[i]);
 		}
 		i++;
