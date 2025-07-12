@@ -6,13 +6,12 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:25:03 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/11 18:18:50 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/12 10:50:07 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philo.h"
 
-// Gérer les threads : join pour 1 philo, detach sinon, + join du moniteur
 int	end_threads(t_controller **ctrl)
 {
 	int	i;

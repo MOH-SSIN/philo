@@ -6,13 +6,12 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:03:52 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/11 18:17:42 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/12 10:45:57 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-// Création du contrôleur principal
 int	init_ctrl(t_controller **ctrl, char **argv)
 {
 	int	nb_philo;
@@ -31,7 +30,6 @@ int	init_ctrl(t_controller **ctrl, char **argv)
 	return (0);
 }
 
-// Initialisation des mutex : fourchettes + autres protections
 int	init_all_mutex(t_controller **ctrl)
 {
 	int	i;
@@ -52,7 +50,6 @@ int	init_all_mutex(t_controller **ctrl)
 	return (0);
 }
 
-// Création et configuration d’un philosophe
 t_philo	*new_philo(t_philo *ph, char **argv)
 {
 	struct timeval	tv;
@@ -76,7 +73,6 @@ t_philo	*new_philo(t_philo *ph, char **argv)
 	return (ph);
 }
 
-// Initialisation de tous les philosophes
 int	setup_philos(t_controller **ctrl, char **argv)
 {
 	t_philo	*philo;
@@ -96,7 +92,6 @@ int	setup_philos(t_controller **ctrl, char **argv)
 	return (0);
 }
 
-// Fonction principale de préparation avant simulatio
 int	prepare_simulation(char **argv, t_controller **cntrl)
 {
 	if (init_ctrl(cntrl, argv))

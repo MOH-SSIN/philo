@@ -12,7 +12,6 @@
 
 #include "../include/philo.h"
 
-// Vérifie si un philosophe est mort
 void	check_if_dead(t_controller *ctrl, bool *someone_died)
 {
 	int	i;
@@ -37,7 +36,6 @@ void	check_if_dead(t_controller *ctrl, bool *someone_died)
 	}
 }
 
-// Thread qui surveille tous les philosophes
 void	*controller_philos(void *arg)
 {
 	t_controller	*ctrl;
@@ -59,7 +57,6 @@ void	*controller_philos(void *arg)
 	return (NULL);
 }
 
-// Cas spécial : un seul philosophe
 void	handle_one_philo(t_philo *philo)
 {
 	printf("%ld %d has taken a fork\n",
@@ -69,7 +66,6 @@ void	handle_one_philo(t_philo *philo)
 		get_time_now() - philo->start_time, philo->id);
 }
 
-// Routine principale pour chaque philosophe
 void	*routine(void *arg)
 {
 	t_philo	*philo;
@@ -98,7 +94,6 @@ void	*routine(void *arg)
 	return (NULL);
 }
 
-// Lancement de tous les threads (philosophes + moniteur)
 int	lancer_simulation(t_controller **cntrl)
 {
 	int	i;

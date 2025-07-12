@@ -6,13 +6,12 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 18:05:05 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/11 18:18:02 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/12 10:46:04 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-// Le philosophe mange
 void	philo_eat(t_philo *philo)
 {
 	long	now;
@@ -29,14 +28,12 @@ void	philo_eat(t_philo *philo)
 	ft_usleep(philo->time_to_eat);
 }
 
-// Le philosophe dort
 void	philo_sleep(t_philo *philo)
 {
 	display_state(philo, "is sleeping");
 	ft_usleep(philo->time_to_sleep);
 }
 
-// Le philosophe réfléchit
 void	philo_think(t_philo *philo)
 {
 	display_state(philo, "is thinking");

@@ -6,13 +6,12 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 20:39:14 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/11 18:16:05 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/12 10:45:09 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-// Libère la mémoire de chaque philosophe et détruit son mutex
 void	clean_philos(t_controller *cntrl)
 {
 	int	i;
@@ -30,7 +29,6 @@ void	clean_philos(t_controller *cntrl)
 	free(cntrl->philos);
 }
 
-// Détruit les mutex globaux (print et eat counter)
 void	clean_global_mutex(t_controller *cntrl)
 {
 	pthread_mutex_destroy(&cntrl->print_mutex);
@@ -38,7 +36,6 @@ void	clean_global_mutex(t_controller *cntrl)
 	pthread_mutex_destroy(&cntrl->last_meal_mutex);
 }
 
-// Libère toutes les ressources du contrôleur
 void	free_controller(t_controller *cntrl)
 {
 	int	i;

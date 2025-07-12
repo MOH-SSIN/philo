@@ -6,13 +6,12 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:38:07 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/11 18:18:21 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/12 10:49:24 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-// Vérifie si tous les philosophes ont fini de manger
 bool	all_philos_done(t_controller *ctrl)
 {
 	int	i;
@@ -32,7 +31,6 @@ bool	all_philos_done(t_controller *ctrl)
 	return (true);
 }
 
-// Affiche l'état d'un philosophe avec son timestamp
 void	display_state(t_philo *philo, char *msg)
 {
 	pthread_mutex_lock(&philo->controller->print_mutex);
@@ -42,7 +40,6 @@ void	display_state(t_philo *philo, char *msg)
 	pthread_mutex_unlock(&philo->controller->print_mutex);
 }
 
-// Retourne l'heure actuelle en millisecondes
 size_t	get_time_now(void)
 {
 	struct timeval	tv;
@@ -52,7 +49,6 @@ size_t	get_time_now(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
-// Usleep personnalisé pour une attente précise
 void	ft_usleep(size_t ms)
 {
 	size_t	start;
