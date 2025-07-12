@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:25:19 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/12 13:53:09 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/12 13:57:13 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_philo
 typedef struct s_controller
 {
 	int				philo_count;
-	int				ready_count;
 
 	t_philo			**philos;
 	pthread_t		monitor_thread;
