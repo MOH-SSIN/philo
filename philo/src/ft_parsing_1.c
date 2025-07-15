@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:47:31 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/07 17:57:53 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/14 18:26:15 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	ft_parsin(int argc, char **argv)
 	if (ft_chek_argv(argv))
 		return (-1);
 	if (argc < 5 || argc > 6)
-		return (-1);
-	if (ft_atoi(argv[1]) > 200)
 		return (-1);
 	return (0);
 }

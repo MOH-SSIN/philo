@@ -106,11 +106,11 @@ int	lancer_simulation(t_controller **cntrl)
 				NULL,
 				&routine,
 				(*cntrl)->philos[i]))
-			return (ft_putstr_fd("Erreur création philo\n", 2), -1);
+			return (ft_putstr_fd("Erreur creation philo\n", 2), -1);
 		i++;
 	}
 	if (pthread_create(&(*cntrl)->monitor_thread, NULL,
 			&controller_philos, (*cntrl)))
-		return (ft_putstr_fd("Erreur création moniteur\n", 2), -1);
+		return (ft_putstr_fd("Erreur creation moniteur\n", 2), -1);
 	return (0);
 }
