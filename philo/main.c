@@ -6,7 +6,7 @@
 /*   By: mez-zahi <mez-zahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 15:25:03 by mez-zahi          #+#    #+#             */
-/*   Updated: 2025/07/15 15:15:32 by mez-zahi         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:35:41 by mez-zahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 		return (1);
 	lancer_simulation(&cntrl);
 	end_threads(&cntrl);
-	// usleep(1000000);
+	usleep(1000000);
 	free_controller(cntrl);
 	return (0);
 }
